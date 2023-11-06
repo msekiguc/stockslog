@@ -1,13 +1,14 @@
 from flask import Blueprint, render_template, request
 import sqlalchemy
 import mysql.connector
+from pw import password
 from sqlalchemy.ext.declarative import declarative_base
 
 
 def insertStock(stockInfo):
     engine = sqlalchemy.create_engine(
         #TODO secure password
-        'mysql+mysqlconnector://root:' + '' + '@localhost:3306/stocks_log', echo=True)
+        'mysql+mysqlconnector://root:' + password + '@localhost:3306/stocks_log', echo=True)
     Base = declarative_base()
     class Stocks(Base):
         __tablename__ = 'stocks'
